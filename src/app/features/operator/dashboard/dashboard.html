@@ -1,0 +1,53 @@
+<div class="p-10 min-h-screen bg-base-100">
+  <div class="flex items-center gap-6 mb-8">
+    <div class="avatar">
+      <div class="w-24 rounded-full ring ring-secondary ring-offset-base-100 ring-offset-2">
+        <img *ngIf="photoDataUrl; else defaultAvatar" [src]="photoDataUrl" alt="Profil" />
+        <ng-template #defaultAvatar>
+          <img src="https://ui-avatars.com/api/?name={{ pseudo }}" alt="Default" />
+        </ng-template>
+      </div>
+    </div>
+
+    <div>
+      <h1 class="text-2xl font-bold">Bienvenue, {{ pseudo }}</h1>
+
+      <!-- Mini formulaire import photo -->
+      <label class="btn btn-sm btn-outline mt-2 cursor-pointer">
+        Importer une photo
+        <input type="file" class="hidden " (change)="onPhotoSelected($event)" accept="image/*" />
+      </label>
+    </div>
+  </div>
+
+
+
+  <div class="mb-6 text-gray-600">
+    <p>Identifiant : <strong>{{ username }}</strong></p>
+    <p>Nom complet : <strong>{{ pseudo }}</strong></p>
+    <p>Rôle : <span class="badge badge-secondary">{{ role }}</span></p>
+  </div>
+
+  <div  role="alert" class="alert alert-warning mb-2">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+    </svg>
+    <span>Profil Exploitant actuellement en cours de developpement.</span>
+  </div>
+  <div class="tooltip tooltip-open tooltip-right tooltip-secondary">
+    <div class="tooltip-content">
+      <div class="animate-bounce text-yellow-400 -rotate-10 text-2xl font-black"> ⌛... </div>
+    </div>
+
+    <p>Profil exploitant: consulte les donnees des agents en fonction du filtre ou d'un scan.</p>
+  </div>
+  <!--<div class="mb-8">
+    <a class="btn btn-secondary" routerLink="/hse/add">➕ Ajouter un agent</a>
+  </div>-->
+
+  <div>
+    <h2 class="text-xl font-semibold mb-2">Liste des agents</h2>
+    <!-- Future table ou cartes ici -->
+    <p class="text-gray-400 italic">Aucun agent disponible pour le moment.</p>
+  </div>
+</div>
