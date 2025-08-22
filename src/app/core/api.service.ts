@@ -7,7 +7,8 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private baseUrl = 'https://api-m8ri.onrender.com/api'; // adapte à ton backend
+  private baseUrl = 'http://localhost:8080/api'; // adapte à ton backend
+   result: any;
 
   constructor(private http: HttpClient) {}
 
@@ -15,4 +16,9 @@ export class ApiService {
     const auth = {'username': username, 'password': password};
     return this.http.post<AuthResponse>(`${this.baseUrl}/login`, auth);
   }
+
+  createLocation(location: { location: String }): Observable<string> {
+    return this.http.post<string>(`${this.baseUrl}/location`, location);
+  }
+
 }

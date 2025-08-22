@@ -6,12 +6,21 @@ import {HseDashboard} from './features/hse/dashboard/dashboard';
 import {AgentForm} from './features/hse/agent-form/agent-form';
 import {Dashboard} from './features/operator/dashboard/dashboard';
 import {AgentView} from './features/operator/agent-view/agent-view';
+import {AdminDashboard} from './features/admin/dashboard/dashboard';
 
 
 export const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: Home },
   { path: 'login', component: LoginComponent},
+  {
+    path: 'admin',
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: AdminDashboard },
+    ]
+  },
   {
     path: 'hse',
     canActivate: [AuthGuard],
