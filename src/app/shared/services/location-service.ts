@@ -23,4 +23,28 @@ export class LocationService {
       throw err; // tu peux relancer si tu veux gérer ailleurs
     }
   }
+
+  async getAllLocation()  {
+    try {
+      const data = await firstValueFrom(
+        this.apiService.getAllLocations()
+      );
+      return data;
+    }catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
+
+  async deleteLocation(location: string) {
+    try {
+      const data = await firstValueFrom(
+        this.apiService.deleteLocation(location)
+      );
+      return data;
+    }catch (err) {
+      console.error(err);
+      throw err;
+    }
+  }
 }

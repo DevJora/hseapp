@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {AuthResponse} from '../shared/models/AuthResponse';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {LocationSite} from '../shared/models/Location';
 
 @Injectable({
   providedIn: 'root'
@@ -21,4 +22,11 @@ export class ApiService {
     return this.http.post<string>(`${this.baseUrl}/location`, location);
   }
 
+  getAllLocations() {
+    return this.http.get<LocationSite[]>(`${this.baseUrl}/location`);
+  }
+
+  deleteLocation(location: string) {
+    return this.http.delete(`${this.baseUrl}/location/${location}`);
+  }
 }

@@ -1,7 +1,22 @@
-<fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
-  <legend class="fieldset-legend">Ajouter un site</legend>
-  <div class="join">
-    <input type="text" [(ngModel)]="newLocation" class="input join-item" placeholder="Nom de site" />
-    <button class="btn join-item" (click)="addNewLocation()">Ajouter</button>
-  </div>
-</fieldset>
+
+<div class="flex w-full content-center">
+  <fieldset class="fieldset bg-base-200 border-base-300 rounded-box w-xs border p-4">
+    <legend class="fieldset-legend">Ajouter un site</legend>
+    <div class="join">
+      <input type="text" [(ngModel)]="newLocation" class="input join-item" placeholder="Nom de site" />
+      <button class="btn join-item" (click)="addNewLocation()">Ajouter</button>
+    </div>
+  </fieldset>
+  <div class="divider divider-horizontal text-4xl text-accent">.</div>
+  <ul class="list ">
+    <li *ngFor="let l of location" class="list-row bg-base-200 border-base-300 rounded-box w-xs border">
+      <div>
+        <div>{{l.location}}</div>
+        <div class="text-xs uppercase font-semibold opacity-60">{{l.createdAt}}</div>
+      </div>
+      <button class="btn btn-error w-max" (click)="deleteSite(l.location)">
+        Supprimer
+      </button>
+    </li>
+  </ul>
+</div>
